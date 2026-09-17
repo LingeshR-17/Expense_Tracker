@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: finflow-postgres
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: finflow_user
+      POSTGRES_PASSWORD: finflow_password
+      POSTGRES_DB: finflow_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: finflow-pgadmin
+    ports:
+      - "5050:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@finflow.local
+      PGADMIN_DEFAULT_PASSWORD: admin
+    depends_on:
+      - postgres
+
+  # backend:
+  #   build: ./backend
+  #   ports:
+  #     - "8080:8080"
+  #   depends_on:
+  #     - postgres
+  #   environment:
+  #     SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/finflow_db
+  #     SPRING_DATASOURCE_USERNAME: finflow_user
+  #     SPRING_DATASOURCE_PASSWORD: finflow_password
+
+  # frontend:
+  #   build: ./frontend
+  #   ports:
+  #     - "5173:5173"
+  #   depends_on:
+  #     - backend
+
+volumes:
+  postgres_data:
