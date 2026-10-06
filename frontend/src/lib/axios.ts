@@ -63,7 +63,7 @@ api.defaults.adapter = async (config: any): Promise<any> => {
           email: matched.email,
           firstName: matched.firstName,
           lastName: matched.lastName,
-          currency: matched.currency || 'USD',
+          currency: matched.currency || 'INR',
           accountType: 'custom' as const,
         };
         storageEngine.initializeUser(userObj.id, false);
@@ -77,9 +77,9 @@ api.defaults.adapter = async (config: any): Promise<any> => {
       }
 
       // Default demo login if password matches demo, otherwise return 401
-      if (email.includes('demo')) {
+      if (email.includes('demo') || email.includes('aarav')) {
         return {
-          data: { accessToken: 'jwt-demo-token-alex', user: DEMO_USER },
+          data: { accessToken: 'jwt-demo-token-aarav', user: DEMO_USER },
           status: 200,
           statusText: 'OK',
           headers: {},
@@ -89,7 +89,7 @@ api.defaults.adapter = async (config: any): Promise<any> => {
 
       const err: any = new Error('Invalid email or password');
       err.response = {
-        data: { error: { message: 'Invalid credentials. Please use demo@finflow.com (demo123) or user@finflow.com (user123).' } },
+        data: { error: { message: 'Invalid credentials. Please use demo@finflow.com / aarav@finflow.in (demo123) or user@finflow.com (user123).' } },
         status: 401,
         statusText: 'Unauthorized',
       };
@@ -106,7 +106,7 @@ api.defaults.adapter = async (config: any): Promise<any> => {
       firstName,
       lastName,
       email,
-      currency: currency || 'USD',
+      currency: currency || 'INR',
       accountType: 'custom' as const,
     };
     const customRaw = localStorage.getItem('finflow_registered_users');

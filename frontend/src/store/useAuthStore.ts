@@ -38,7 +38,7 @@ export const useAuthStore = create<AuthState>()(
       isAuthenticated: () => !!get().token,
     }),
     {
-      name: 'auth-storage',
+      name: 'finflow_auth_v2',
     }
   )
 );

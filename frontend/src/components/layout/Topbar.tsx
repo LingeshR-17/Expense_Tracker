@@ -94,7 +94,7 @@ export default function Topbar() {
               {user?.firstName} {user?.lastName}
             </span>
             <span className="text-[10px] text-muted-foreground leading-tight font-mono">
-              {user?.currency || 'USD'}
+              {user?.currency || 'INR'}
             </span>
           </div>
           <button

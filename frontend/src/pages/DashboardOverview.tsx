@@ -32,7 +32,7 @@ import AddTransactionModal from "../components/transactions/AddTransactionModal"
 
 export default function DashboardOverview() {
   const user = useAuthStore((state) => state.user)
-  const currency = user?.currency || "USD"
+  const currency = user?.currency || "INR"
   const isDemo = user?.id === DEMO_USER.id || user?.accountType === "demo"
   const [isModalOpen, setIsModalOpen] = useState(false)
 
@@ -306,10 +306,10 @@ export default function DashboardOverview() {
                       fontSize={11} 
                       tickLine={false} 
                       axisLine={false} 
-                      tickFormatter={(v) => `$${v}`} 
+                      tickFormatter={(v) => formatCurrency(v, currency).replace(/\.00$/, '')} 
                     />
                     <Tooltip 
-                      formatter={(val: any) => [`$${val}`, '']}
+                      formatter={(val: any) => [formatCurrency(Number(val) || 0, currency), '']}
                       contentStyle={{ borderRadius: '12px', background: 'hsl(var(--card))', border: '1px solid hsl(var(--border))' }}
                     />
                     <Area 
@@ -378,7 +378,7 @@ export default function DashboardOverview() {
                         ))}
                       </Pie>
                       <Tooltip 
-                        formatter={(val: any) => [`$${val}`, 'Amount']}
+                        formatter={(val: any) => [formatCurrency(Number(val) || 0, currency), 'Amount']}
                         contentStyle={{ borderRadius: '12px', background: 'hsl(var(--card))', border: '1px solid hsl(var(--border))' }}
                       />
                     </PieChart>
@@ -391,7 +391,7 @@ export default function DashboardOverview() {
                     <div key={c.name} className="flex items-center gap-2">
                       <span className="h-2 w-2 rounded-full" style={{ backgroundColor: c.color }} />
                       <span className="truncate text-muted-foreground">{c.name}</span>
-                      <span className="ml-auto font-medium text-foreground">${c.value}</span>
+                      <span className="ml-auto font-medium text-foreground">{formatCurrency(c.value, currency)}</span>
                     </div>
                   ))}
                 </div>

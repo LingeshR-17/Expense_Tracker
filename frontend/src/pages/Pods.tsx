@@ -7,7 +7,7 @@ import { Users, Plus, Mail, ArrowRight, CheckCircle2, UserCheck } from 'lucide-r
 export default function Pods() {
   const { pods, isLoading, createPod, inviteMember, getSettlementPlan, settleUp } = usePods();
   const user = useAuthStore((state) => state.user);
-  const currency = user?.currency || 'USD';
+  const currency = user?.currency || 'INR';
 
   const [newPodName, setNewPodName] = useState('');
   const [inviteEmail, setInviteEmail] = useState('');

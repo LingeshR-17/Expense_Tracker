@@ -235,9 +235,9 @@ export default function AddTransactionModal({ isOpen, onClose }: AddTransactionM
                     {splitType === 'CUSTOM' && (
                       <div className="mt-4 space-y-2 border-t pt-2">
                         <div className="flex justify-between text-sm text-muted-foreground mb-2">
-                          <span>Running Total: ${getCustomTotal().toFixed(2)}</span>
+                          <span>Running Total: ₹{getCustomTotal().toFixed(2)}</span>
                           <span className={Math.abs(getCustomTotal() - (parseFloat(amount) || 0)) < 0.01 ? 'text-emerald-500' : 'text-destructive'}>
-                            Target: ${parseFloat(amount) || 0}
+                            Target: ₹{parseFloat(amount) || 0}
                           </span>
                         </div>
                         {selectedPod.members.map(m => (

@@ -12,7 +12,7 @@ export default function Transactions() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const { categories } = useCategories()
   const user = useAuthStore((state) => state.user)
-  const currency = user?.currency || "USD"
+  const currency = user?.currency || "INR"
 
   // Filter state
   const [keyword, setKeyword] = useState("")

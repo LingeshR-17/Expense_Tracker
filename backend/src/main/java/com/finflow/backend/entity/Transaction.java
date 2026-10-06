@@ -34,7 +34,7 @@ public class Transaction {
 
     @Column(length = 10)
     @Builder.Default
-    private String currency = "USD";
+    private String currency = "INR";
 
     @Column(name = "transaction_date", nullable = false)
     private LocalDate transactionDate;

@@ -21,7 +21,7 @@ export default function Register() {
 
   const form = useForm<z.infer<typeof registerSchema>>({
     resolver: zodResolver(registerSchema),
-    defaultValues: { firstName: "", lastName: "", email: "", password: "", currency: "USD" },
+    defaultValues: { firstName: "", lastName: "", email: "", password: "", currency: "INR" },
   })
 
   async function onSubmit(values: z.infer<typeof registerSchema>) {
@@ -86,10 +86,10 @@ export default function Register() {
               {...form.register("currency")}
               className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
+              <option value="INR">INR (₹ - Indian Rupee)</option>
               <option value="USD">USD ($ - US Dollar)</option>
               <option value="EUR">EUR (€ - Euro)</option>
               <option value="GBP">GBP (£ - British Pound)</option>
-              <option value="INR">INR (₹ - Indian Rupee)</option>
               <option value="CAD">CAD (CA$ - Canadian Dollar)</option>
               <option value="AUD">AUD (A$ - Australian Dollar)</option>
               <option value="JPY">JPY (¥ - Japanese Yen)</option>

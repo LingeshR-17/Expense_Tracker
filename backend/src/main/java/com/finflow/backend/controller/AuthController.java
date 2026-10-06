@@ -65,7 +65,7 @@ public class AuthController {
                 .lastName(registerRequest.getLastName())
                 .email(registerRequest.getEmail())
                 .passwordHash(passwordEncoder.encode(registerRequest.getPassword()))
-                .currency(registerRequest.getCurrency() != null ? registerRequest.getCurrency() : "USD")
+                .currency(registerRequest.getCurrency() != null ? registerRequest.getCurrency() : "INR")
                 .build();
 
         User savedUser = userRepository.save(user);

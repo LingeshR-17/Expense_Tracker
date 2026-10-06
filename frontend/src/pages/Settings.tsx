@@ -24,7 +24,7 @@ export default function Settings() {
   const queryClient = useQueryClient();
 
   const isDemo = user?.id === DEMO_USER.id || user?.accountType === 'demo';
-  const currency = user?.currency || 'USD';
+  const currency = user?.currency || 'INR';
 
   const [transactionId, setTransactionId] = useState('');
   const [frequency, setFrequency] = useState<'WEEKLY' | 'MONTHLY' | 'YEARLY'>('MONTHLY');
@@ -176,10 +176,10 @@ export default function Settings() {
             <label className="text-xs font-medium text-muted-foreground block">Active Currency</label>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
               {[
+                { code: 'INR', symbol: '₹', label: 'Indian Rupee' },
                 { code: 'USD', symbol: '$', label: 'US Dollar' },
                 { code: 'EUR', symbol: '€', label: 'Euro' },
                 { code: 'GBP', symbol: '£', label: 'British Pound' },
-                { code: 'INR', symbol: '₹', label: 'Indian Rupee' },
                 { code: 'CAD', symbol: 'CA$', label: 'Canadian Dollar' },
                 { code: 'JPY', symbol: '¥', label: 'Japanese Yen' },
               ].map((c) => (
@@ -204,7 +204,7 @@ export default function Settings() {
           <div className="pt-2 border-t">
             <span className="text-xs text-muted-foreground block mb-1">Example Formatting:</span>
             <span className="text-xl font-bold font-heading text-emerald-600 dark:text-emerald-400">
-              {formatCurrency(12450.50, currency)}
+              {formatCurrency(125000.50, currency)}
             </span>
           </div>
         </div>

@@ -4,7 +4,7 @@ CREATE TABLE users (
     password_hash VARCHAR(255) NOT NULL,
     first_name VARCHAR(100),
     last_name VARCHAR(100),
-    currency VARCHAR(10) DEFAULT 'USD',
+    currency VARCHAR(10) DEFAULT 'INR',
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
@@ -23,7 +23,7 @@ CREATE TABLE transactions (
     user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     category_id UUID NOT NULL REFERENCES categories(id) ON DELETE RESTRICT,
     amount DECIMAL(15, 2) NOT NULL,
-    currency VARCHAR(10) DEFAULT 'USD',
+    currency VARCHAR(10) DEFAULT 'INR',
     transaction_date DATE NOT NULL,
     description TEXT,
     payment_method VARCHAR(50),

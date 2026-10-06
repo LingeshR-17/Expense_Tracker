@@ -23,7 +23,7 @@ export default function Categories() {
   const { categories, isLoading, createCategory } = useCategories()
   const { transactions } = useTransactions()
   const user = useAuthStore((state) => state.user)
-  const currency = user?.currency || "USD"
+  const currency = user?.currency || "INR"
 
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [newCatName, setNewCatName] = useState("")
